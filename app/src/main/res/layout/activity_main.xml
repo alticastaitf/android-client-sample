@@ -2,5 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Button
+        android:id="@+id/secondactivity"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="second activity"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/showtoast"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="show toast"
+        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/hideprompt"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="hide prompt"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
