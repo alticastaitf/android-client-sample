@@ -10,6 +10,8 @@ import com.alticast.mmuxclient.ClientAPI;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by dy.yoon on 2018-05-18.
  */
@@ -32,8 +34,7 @@ public class ASREventController implements  ClientAPI.Callback<ClientAPI.ASRResu
     public void callback(ClientAPI.ASRResult asrResult) {
         String response = asrResult.getSpokenResponse();
         String pattern = asrResult.getMatchedPattern();
-        JSONArray entities = asrResult.getMatchedEntities();
-        JSONObject jsonObject = new JSONObject();
+        ArrayList<ClientAPI.Entity> entities = asrResult.getMatchedEntities();
 
         if (listener != null)
             listener.receiveCommand(pattern, response, entities);

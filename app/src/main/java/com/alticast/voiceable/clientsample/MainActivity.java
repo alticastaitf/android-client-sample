@@ -6,7 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alticast.mmuxclient.ClientAPI;
+
 import org.json.JSONArray;
+
+import java.util.ArrayList;
 
 /**
  * Created by dy.yoon on 2018-05-18.
@@ -56,7 +60,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public boolean receiveCommand(String pattern, String response, JSONArray entities){
+    public boolean receiveCommand(String pattern, String response, ArrayList<ClientAPI.Entity> entities){
         if (pattern.equalsIgnoreCase(MainGrammar.PATTERN_TV_ON)) {//TV ON
             Toast.makeText(this, "TV on", Toast.LENGTH_SHORT).show();
             return true;
