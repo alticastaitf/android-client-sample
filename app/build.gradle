@@ -4,7 +4,7 @@ android {
     defaultConfig {
         applicationId "com.alticast.voiceable.clientsample"
         minSdkVersion 23
-        targetSdkVersion 27
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
