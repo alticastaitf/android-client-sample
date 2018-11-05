@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alticast.mmuxclient.ClientAPI;
+import com.alticast.mmuxclient.Entity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by dy.yoon on 2018-05-18.
@@ -34,7 +36,7 @@ public class ASREventController implements  ClientAPI.Callback<ClientAPI.ASRResu
     public void callback(ClientAPI.ASRResult asrResult) {
         String response = asrResult.getSpokenResponse();
         String pattern = asrResult.getMatchedPattern();
-        ArrayList<ClientAPI.Entity> entities = asrResult.getMatchedEntities();
+        Map<String, Entity> entities = asrResult.getMatchedEntities();
 
         if (listener != null)
             listener.receiveCommand(pattern, response, entities);
