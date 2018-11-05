@@ -1,30 +1,23 @@
 package com.alticast.voiceable.clientsample;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.alticast.mmuxclient.ClientAPI;
+import com.alticast.mmuxclient.Entity;
 
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by dy.yoon on 2018-05-18.
  */
 
-public class BaseActivity extends Activity implements CommandListener {
+public class BaseActivity extends AppCompatActivity implements CommandListener {
     @Override
-    protected void onResume() {
-        super.onResume();
-        ASREventController.getInstance().setCommandListener(this, this.getClass().getSimpleName());
-    }
-    @Override
-    protected void onPause(){
-        super.onPause();
-        ASREventController.getInstance().removeCommandListener(this);
-    }
-    @Override
-    public boolean receiveCommand(String pattern, String response, ArrayList<ClientAPI.Entity> entities) {
+    public boolean receiveCommand(String pattern, String response, Map<String, Entity> entities) {
         return false;
     }
 }

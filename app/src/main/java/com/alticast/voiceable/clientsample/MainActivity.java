@@ -7,15 +7,19 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.alticast.mmuxclient.ClientAPI;
+import com.alticast.mmuxclient.Entity;
+import com.alticast.mmuxclient.annotations.VoiceableCallback;
+import com.alticast.mmuxclient.annotations.VoiceableContext;
 
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by dy.yoon on 2018-05-18.
  */
-
+@VoiceableContext("MAIN")
 public class MainActivity extends BaseActivity {
     Button showToastButton;
     Button showPromptButton;
@@ -26,8 +30,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Create ASR Context on Application Start
-        ASREventController.getInstance().createASRContext(getApplicationContext());
+
+        //Initialize ClientAPI
+        ASREventController.getInstance().initialize(this);
+
         showToastButton = findViewById(R.id.showtoast);
         showToastButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,20 +57,22 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        //Register VoiceableContext Activity
+        ASREventController.register(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ASREventController.getInstance().destroyASRContext();
-    }
 
     @Override
-    public boolean receiveCommand(String pattern, String response, ArrayList<ClientAPI.Entity> entities){
+    public boolean receiveCommand(String pattern, String response, Map<String, Entity> entities){
         if (pattern.equalsIgnoreCase(MainGrammar.PATTERN_TV_ON)) {//TV ON
             Toast.makeText(this, "TV on", Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;
     }
+
+//    @VoiceableCallback
+//    public void customAction(String pattern, String response, Map<String, Entity> entities){
+//
+//    }
 }

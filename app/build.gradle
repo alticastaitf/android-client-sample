@@ -32,6 +32,6 @@ dependencies {
         exclude module: 'support-annotations'
     }
     compile 'org.apache.commons:commons-collections4:4.1'
-    compile 'voiceable:client-library:0.1.2-alpha@aar'
+    compile 'voiceable:client-library:0.3.0-alpha@aar'
     compile "com.google.protobuf:protobuf-java:3.5.1"
 }
